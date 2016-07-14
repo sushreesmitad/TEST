@@ -38,7 +38,7 @@ public class JDBCExample {
 			System.out.println("query is "+query);
 			int record = st.executeUpdate(query);
 			if(record > 0)
-				System.out.println("Records inserted");
+				System.out.println("Record inserted");
 
 		} catch (SQLException e) {
 
@@ -48,7 +48,7 @@ public class JDBCExample {
 
 		}
 		finally{
-			
+			System.out.println("in finally");
 			try{
 				
 				connection.close();
@@ -65,7 +65,7 @@ public class JDBCExample {
 		
 		String name = null;
 	try {
-
+		System.out.println("in getStudent");
 			
            	Connection connection = null;
 			connection = DriverManager.getConnection(
