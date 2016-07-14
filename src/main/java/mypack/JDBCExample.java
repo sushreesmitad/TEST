@@ -27,7 +27,7 @@ public class JDBCExample {
 		try {
 
 			
-          
+          System.out.println("in save student");
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost:5432/testdb", "testuser","");
 			Statement st = connection.createStatement();

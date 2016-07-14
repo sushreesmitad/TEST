@@ -39,7 +39,7 @@ test:
  - echo $CIRCLE_BRANCH
  - echo $CIRCLE_TEST_REPORTS
  - pwd
- - ls -l /home/ubuntu/test
+ - ls -l /home/ubuntu/TEST
  override:
     #- mvn clean install -Dpropfilepath="/home/ubuntu/TEST" it is hardcoding...
     - mvn clean install -Dpropfilepath=$HOME/$CIRCLE_PROJECT_REPONAME
