@@ -1,0 +1,51 @@
+machine:
+  pre:
+  - date
+  - pwd
+  java:
+    version: oraclejdk8
+  environment:
+    propfilepath: /home/ubuntu/test
+  services:
+    - postgresql
+#dependencies:
+  # override:
+    # -mvn clean install
+    
+dependencies:
+  pre:
+     - mkdir -p assets/cache
+  cache_directories:
+      - "assets/cache"    # relative to the build directory
+   
+database:
+   override:
+    #- creates a super user (-s) who can create database (-d);
+    - createuser -s -d testuser
+    #- create a database
+    - createdb testdb
+    - psql testdb < /home/ubuntu/test/back.sql
+    # below prints the records present in the db
+    - psql -U testuser  testdb  -w -f $HOME/$CIRCLE_PROJECT_REPONAME/sqlrun.txt > output
+    - cat output
+  
+
+
+test:
+
+ pre: 
+ - echo $CIRCLE_USERNAME
+ - echo $CIRCLE_REPOSITORY_URL
+ - echo $CIRCLE_BRANCH
+ - echo $CIRCLE_TEST_REPORTS
+ - pwd
+ - ls -l /home/ubuntu/test
+ override:
+    #- mvn clean install -Dpropfilepath="/home/ubuntu/test" it is hardcoding...
+    - mvn clean install -Dpropfilepath=$HOME/$CIRCLE_PROJECT_REPONAME
+
+    
+
+
+ 
+ 
