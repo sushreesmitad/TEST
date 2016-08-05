@@ -23,11 +23,12 @@ public class JDBCExample {
 		String name = null;
 		System.out.println("-------- PostgreSQL "
 				+ "JDBC Connection Testing ------------");
+	
 		Connection connection = null;
 		try {
 
 			
-          System.out.println("in save student");
+          System.out.println("save student entry");
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost:5432/testdb", "testuser","");
 			Statement st = connection.createStatement();

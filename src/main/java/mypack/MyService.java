@@ -34,10 +34,10 @@ public class MyService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getObject() {
     	
-    	
+    	System.out.println("getObject");
     	Response response  = null;
     	Student s = new Student();
-    	s.setName("Abhishake");
+    	s.setName("smita");
     	s.setAge(23);
     	response = Response
 				.status(javax.ws.rs.core.Response.Status.OK)
